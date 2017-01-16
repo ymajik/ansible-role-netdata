@@ -1,17 +1,19 @@
 ---
-  - name: Include OS-specific variables.
+  - name: include OS-specific variables.
     include_vars: "{{ ansible_os_family }}.yml"
 
-  - name: NETDATA | Check if present
+  - name: check if present
     stat:
       path: "{{ netdata_binary }}"
     register: netdata_present
+
   - debug: msg="netdata not installed"
     when: netdata_present.stat.exists == False
+
   - debug: msg="netdata installed"
     when: netdata_present.stat.exists == True
 
-  - name: NETDATA | Install package dependencies
+  - name: install package dependencies
     package:
       name: "{{ item }}"
       state: present
@@ -19,7 +21,7 @@
     when: netdata_present.stat.exists == False
     become: yes
 
-  - name: NETDATA | Clone or Pull for Install or Update
+  - name: clone or pull for install or update
     git:
       repo: https://github.com/firehol/netdata.git
       dest: "{{ netdata_install_dir }}"
@@ -28,13 +30,12 @@
 
   - debug: var=clone_or_pull
 
-  - name: NETDATA | Build and install
+  - name: build and install
     shell: "./netdata-installer.sh --install {{ netdata_install_dir }} --dont-wait"
     args:
       chdir: "{{ netdata_install_dir }}"
     when: clone_or_pull.changed == True
     become: yes
-
     notify: stop service
 
   - meta: flush_handlers

@@ -1,0 +1,13 @@
+FROM debian:stretch
+
+RUN apt-get update -y \
+ && apt-get install -y systemd
+# Install Ansible
+RUN apt-get install -y ansible git
+# Clean up
+RUN rm -rf /var/lib/apt/lists/*
+
+# Install Ansible inventory file
+RUN mkdir -pv /etc/ansible
+RUN touch /etc/ansible/hosts
+RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
