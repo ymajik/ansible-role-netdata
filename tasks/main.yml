@@ -25,7 +25,6 @@
     git:
       repo: https://github.com/firehol/netdata.git
       dest: "{{ netdata_install_dir }}"
-      depth: 1
       version: "{{ netdata_version }}"
     register: clone_or_pull
 
