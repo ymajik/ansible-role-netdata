@@ -1,3 +1,4 @@
 ---
 # defaults file for leanbit.netdata
 netdata_install_dir: /opt/netdata
+netdata_version: v1.5.0
