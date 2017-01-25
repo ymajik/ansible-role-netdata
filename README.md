@@ -16,6 +16,7 @@ Role Variables
 
 ```yaml
     netdata_install_dir: /opt/netdata
+    netdata_version: v1.5.0
 ```
 Netdata dependencies are loaded from within the vars file per operating system family (Debian or RedHat).
 
