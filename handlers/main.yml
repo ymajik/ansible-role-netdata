@@ -1,5 +1,5 @@
 ---
-# handlers file for leanbit.netdata
+# handlers file for ymajik.netdata
 - name: stop service
   service:
     name: netdata
