@@ -1,0 +1,13 @@
+{% if netdata_graphite_enabled %}
+[backend]
+	 enabled = yes
+	 data source = average
+	 type = graphite
+	 destination = {{ netdata_graphite_server }}:{{ netdata_graphite_server_port }}
+	 prefix = netdata
+	 hostname = {{ ansible_nodename }}
+	 update every = 10
+	 buffer on failures = 10
+	 timeout ms = 20000
+{% endif %}
+
