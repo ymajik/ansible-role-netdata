@@ -39,6 +39,17 @@
 
   - meta: flush_handlers
 
+  - name: Copy config file
+    template:
+      src: "{{ item }}.j2"
+      dest: /opt/netdata/netdata/etc/netdata/{{ item }}
+      owner: netdata
+      group: netdata
+      mode: 0660
+    with_item:
+      - netdata.conf
+    when: netdata_manage_config == True
+
   - name: Copy service file
     command: cp {{ netdata_install_dir }}/system/netdata.service /etc/systemd/system/netdata.service
     when: clone_or_pull.changed == True and ansible_service_mgr == "systemd"
