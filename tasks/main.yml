@@ -46,8 +46,7 @@
       owner: netdata
       group: netdata
       mode: 0660
-    with_item:
-      - netdata.conf
+    with_items: netdata.conf
     when: netdata_manage_config == True
 
   - name: Copy service file
