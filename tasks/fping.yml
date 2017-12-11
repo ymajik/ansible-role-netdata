@@ -1,0 +1,16 @@
+---
+- name: verify that fping is installed
+  stat:
+    path: /usr/local/bin/fping
+  register: fping_present
+
+- name: install fping
+  command: "{{ netdata_install_dir }}/netdata/usr/libexec/netdata/plugins.d/fping.plugin install"
+  when: fping_present.stat.exists == False
+  notify: restart netdata
+
+- name: ensure fping.conf
+  template:
+    dest: "{{ netdata_install_dir }}/netdata/etc/netdata/fping.conf"
+    src: fping.conf.j2
+  notify: restart netdata

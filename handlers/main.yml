@@ -20,3 +20,9 @@
     state: started
     enabled: yes
   become: true
+
+- name: restart netdata
+  service:
+    name: netdata
+    state: restarted
+    enabled: yes
