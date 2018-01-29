@@ -20,34 +20,15 @@ galaxy_info:
   platforms:
     - name: EL
       versions:
-        - 7
+       - 7
   #- name: Fedora
   #  versions:
   #  - all
-  #  - 16
-  #  - 17
-  #  - 18
-  #  - 19
-  #  - 20
-  #  - 21
-  #  - 22
-  #  - 23
     - name: Ubuntu
       versions:
   #  - all
-  #  - lucid
-  #  - maverick
-  #  - natty
-  #  - oneiric
-      - precise
-  #  - quantal
-  #  - raring
-  #  - saucy
-      - trusty
-  #  - utopic
-  #  - vivid
-  #  - wily
-      - xenial
+       - trusty
+       - xenial
   #- name: GenericLinux
   #  versions:
   #  - all
@@ -55,13 +36,7 @@ galaxy_info:
     - name: Debian
       versions:
   #  - all
-  #  - etch
-      - jessie
-  #  - lenny
-  #  - sid
-  #  - squeeze
-      - stretch
-  #  - wheezy
+       - stretch
 
   galaxy_tags:
     - monitoring
